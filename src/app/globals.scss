@@ -3,9 +3,21 @@
 @tailwind utilities;
 
 html {
-	-webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-	@apply w-dvw h-dvh overflow-hidden bg-background text-white;
+  @apply w-dvw h-dvh overflow-hidden bg-background text-white;
+}
+
+h1 {
+  @apply text-lg tablet:text-xl font-semibold w-fit py-2 text-primary;
+}
+
+h2 {
+  @apply text-base tablet:text-lg w-fit py-1 text-primary/70;
+}
+
+.hover-colors {
+  @apply duration-200 ease-out transition-colors;
 }

@@ -1,13 +1,26 @@
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
 
-const config: Config = {
+const config = {
+  darkMode: ["class"],
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
   ],
+  prefix: "",
   theme: {
     extend: {
+      screens: {
+        "phone-sm": "320px",
+        "phone-md": "375px",
+        "phone-lg": "425px",
+        tablet: "768px",
+        laptop: "1024px",
+        "desktop-sm": "1280px",
+        "desktop-md": "1440px",
+        "desktop-lg": "2560px",
+      },
       colors: {
         primary: '#63f655',
         background: '#0d0c0c',
@@ -16,6 +29,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
-};
-export default config;
+} satisfies Config
+
+export default config

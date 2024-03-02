@@ -1,12 +1,11 @@
 
-/**
+/** 
  * An array of routes that are accessible to the public
  * These routes do not require authentification
  * @type {string[]}
  */
 export const publicRoutes: string[] = [
   "/",
-  "/auth/new-verification",
 ]
 
 /**
@@ -17,9 +16,6 @@ export const publicRoutes: string[] = [
 export const authRoutes: string[] = [
   "/auth/login",
   "/auth/register",
-  "/auth/error",
-  "/auth/reset",
-  "/auth/new-password"
 ]
 
 /**
@@ -33,7 +29,8 @@ export const apiAuthPrefix: string = "/api/auth"
  * The default redirect path after loggin in
  * @type {string}
  */
-export const DEFAULT_LOGGED_IN_REDIRECT: string = "/settings"
+// TODO: make this "/app"
+export const DEFAULT_LOGGED_IN_REDIRECT: string = "/"
 
 /**
  * The default redirect to guest after enter protected page
