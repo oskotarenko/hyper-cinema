@@ -1,5 +1,5 @@
 
-import bcrypt from "bcryptjs";
+import * as bcrypt from "bcryptjs";
 import { NextAuthConfig, } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Github from "next-auth/providers/github";
@@ -37,5 +37,4 @@ const config: NextAuthConfig = {
   ],
 };
 
-export default config
-// satisfies NextAuthConfig
+export default config;
