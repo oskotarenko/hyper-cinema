@@ -1,3 +1,4 @@
+import { Clapperboard, HelpCircle, Home, ListOrdered, LucideIcon, } from "lucide-react";
 
 /** 
  * An array of routes that are accessible to the public
@@ -30,10 +31,29 @@ export const apiAuthPrefix: string = "/api/auth"
  * @type {string}
  */
 // TODO: make this "/app"
-export const DEFAULT_LOGGED_IN_REDIRECT: string = "/"
+export const DEFAULT_LOGGED_IN_REDIRECT: string = "/home"
 
 /**
  * The default redirect to guest after enter protected page
  * @type {string}
  */
 export const DEFAULT_AUTH_REDIRECT: string = "/auth/login"
+
+
+export type NavRoute = {
+  href: string;
+  title: string;
+  icon: LucideIcon;
+}
+
+/**
+ * Navigation routes for sidebar on pages, which available after authorization
+ * @type {NavRoute[]}
+ */
+
+export const navRoutes: NavRoute[] = [
+  { href: "/home", title: "Home", icon: Home },
+  { href: "/movies", title: "Movies", icon: Clapperboard },
+  { href: "/schedules", title: "Schedules", icon: ListOrdered },
+  { href: "/faq", title: "FAQ", icon: HelpCircle }
+]

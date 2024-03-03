@@ -25,6 +25,7 @@ model User {
   role                  UserRole               @default(USER)
   image                 String?
   accounts              Account[]
+  tickets Ticket[]
 }
 
 model Account {
@@ -46,3 +47,63 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
+enum MovieStatus {
+  Released
+  Suspended
+}
+
+model Movie {
+  id String @id @default(uuid())
+  poster String
+  trailer String
+  title String
+  genres String
+  actors String
+  description String @db.Text
+  year Int
+  duration Int
+  country String
+  studio String
+  restrictions Int
+  status MovieStatus @default(Released)
+  schedules Schedule[]
+  createdAt DateTime @default(now())
+}
+
+enum ScheduleStatus {
+  Sale
+  Completed
+  Canceled
+}
+
+model Schedule {
+  id String @id @default(uuid())
+  movie Movie @relation(fields: [movieId], references: [id])
+  movieId String
+  startTime DateTime
+  endTime DateTime
+  price Int
+  hall Int
+  seats Json // because seats is a matrix
+  status ScheduleStatus @default(Sale)
+  tikets Ticket[]
+  createdAt DateTime @default(now())
+}
+
+enum TicketStatus {
+  Actual
+  Expired
+  Refunded
+}
+
+model Ticket {
+  id String @id @default(uuid())
+  schedule Schedule @relation(fields: [scheduleId], references: [id])
+  scheduleId String
+  owner User @relation(fields: [ownerId], references: [id])
+  ownerId String
+  row Int
+  col Int
+  status TicketStatus @default(Actual)
+  createdAt DateTime @default(now())
+}
