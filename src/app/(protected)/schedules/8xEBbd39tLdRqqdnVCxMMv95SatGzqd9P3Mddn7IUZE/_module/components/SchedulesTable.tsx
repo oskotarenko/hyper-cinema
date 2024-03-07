@@ -41,7 +41,7 @@ export function SchedulesTable({ schedules }: Props) {
       </TableColumn>
       <TableColumn title="Manage">
         {schedules.map((schedule) => (
-          <ScheduleStatusButton schedule={schedule} />
+          <ScheduleStatusButton schedule={schedule} key={schedule.id} />
         ))}
       </TableColumn>
     </Table>
