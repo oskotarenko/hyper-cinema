@@ -11,11 +11,11 @@ body {
 }
 
 h1 {
-  @apply text-lg tablet:text-xl font-semibold w-fit py-2 text-primary;
+  @apply text-lg tablet:text-xl font-semibold w-fit text-primary;
 }
 
 h2 {
-  @apply text-base tablet:text-lg w-fit py-1 text-primary;
+  @apply text-base tablet:text-lg w-fit text-primary;
 }
 
 .hover-colors {
@@ -29,11 +29,11 @@ h2 {
   @media (max-width: 768px) {
     @apply block;
   }
-  // h-[calc(100%-24px)]
+
   main {
     @apply overflow-y-scroll overflow-x-hidden scroll-smooth flex flex-col h-full;
 
-    @media (width <=768px) {
+    @media (max-width: 768px) {
       @apply absolute top-0 w-full;
       height: calc(100dvh - 56px);
     }
@@ -45,7 +45,7 @@ h2 {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-black;
+  @apply bg-background;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -53,5 +53,43 @@ h2 {
 
   &:hover {
     @apply bg-primary/70;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  outline: none;
+  -webkit-text-fill-color: theme("colors.white");
+  -webkit-box-shadow: 0 0 0px 1000px theme("colors.gray") inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.file-input {
+  @apply bg-gray;
+
+  &::-webkit-file-upload-button {
+    display: none;
+  }
+
+  &::before {
+    content: "Select file";
+    @apply cursor-pointer bg-gray font-bold text-primary pr-2;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  &:hover::before {
+    border-color: black;
+  }
+
+  &:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
   }
 }

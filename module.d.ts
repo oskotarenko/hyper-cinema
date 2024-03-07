@@ -12,5 +12,10 @@ declare namespace NodeJS {
     GOOGLE_CLIENT_ID: string
     GOOGLE_CLIENT_SECRET: string
 
+
+    USER_ADMIN_URL: string
+    MOVIES_ADMIN_URL: string
+    SCHEDULES_ADMIN_URL: string
+    TICKETS_ADMIN_URL: string
   }
 }

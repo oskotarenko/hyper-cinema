@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
-import Header from "../../components/layout/app-header/Header";
-import { AppNav } from "../../components/layout/app-nav/AppNav";
+import Header from "./_module/components/header/Header";
+import { AppNavigation } from "./_module/components/navigation/Navigation";
 
 type Props = {
   children: ReactNode;
@@ -10,7 +10,7 @@ type Props = {
 export default function ProtectedLayout({ children }: Props) {
   return (
     <div className="app-layout">
-      <AppNav />
+      <AppNavigation />
       <main className="flex-1 flex flex-col">
         <Header />
         <div className="flex-1 p-2">{children}</div>

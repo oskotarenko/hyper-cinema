@@ -30,7 +30,6 @@ export const apiAuthPrefix: string = "/api/auth"
  * The default redirect path after loggin in
  * @type {string}
  */
-// TODO: make this "/app"
 export const DEFAULT_LOGGED_IN_REDIRECT: string = "/home"
 
 /**

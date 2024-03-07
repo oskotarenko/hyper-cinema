@@ -17,15 +17,17 @@ enum UserRole {
 }
 
 model User {
-  id                    String                 @id @default(cuid())
-  name                  String?
-  email                 String?                @unique
-  password              String?
-  emailVerified         DateTime?  @default(now())
-  role                  UserRole               @default(USER)
-  image                 String?
-  accounts              Account[]
-  tickets Ticket[]
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  password      String?
+  emailVerified DateTime? @default(now())
+  role          UserRole  @default(USER)
+  image         String?
+  accounts      Account[]
+  balance       Int       @default(10000)
+  tickets       Ticket[]
+  createdAt     DateTime  @default(now())
 }
 
 model Account {
@@ -53,21 +55,22 @@ enum MovieStatus {
 }
 
 model Movie {
-  id String @id @default(uuid())
-  poster String
-  trailer String
-  title String
-  genres String
-  actors String
-  description String @db.Text
-  year Int
-  duration Int
-  country String
-  studio String
+  id           String      @id @default(uuid())
+  title        String
+  poster       String
+  trailer      String
+  genres       String
+  actors       String
+  description  String      @db.Text
+  year         Int
+  duration     Int
+  country      String
+  studio       String
+  director     String
   restrictions Int
-  status MovieStatus @default(Released)
-  schedules Schedule[]
-  createdAt DateTime @default(now())
+  status       MovieStatus @default(Released)
+  schedules    Schedule[]
+  createdAt    DateTime    @default(now())
 }
 
 enum ScheduleStatus {
@@ -77,17 +80,17 @@ enum ScheduleStatus {
 }
 
 model Schedule {
-  id String @id @default(uuid())
-  movie Movie @relation(fields: [movieId], references: [id])
-  movieId String
+  id        String         @id @default(uuid())
+  movie     Movie          @relation(fields: [movieId], references: [id])
+  movieId   String
   startTime DateTime
-  endTime DateTime
-  price Int
-  hall Int
-  seats Json // because seats is a matrix
-  status ScheduleStatus @default(Sale)
-  tikets Ticket[]
-  createdAt DateTime @default(now())
+  endTime   DateTime
+  price     Int
+  hall      Int
+  seats     Json           @db.JsonB // because seats is a matrix
+  status    ScheduleStatus @default(Sale)
+  tikets    Ticket[]
+  createdAt DateTime       @default(now())
 }
 
 enum TicketStatus {
@@ -97,13 +100,13 @@ enum TicketStatus {
 }
 
 model Ticket {
-  id String @id @default(uuid())
-  schedule Schedule @relation(fields: [scheduleId], references: [id])
+  id         String       @id @default(uuid())
+  schedule   Schedule     @relation(fields: [scheduleId], references: [id])
   scheduleId String
-  owner User @relation(fields: [ownerId], references: [id])
-  ownerId String
-  row Int
-  col Int
-  status TicketStatus @default(Actual)
-  createdAt DateTime @default(now())
+  owner      User         @relation(fields: [ownerId], references: [id])
+  ownerId    String
+  row        Int
+  col        Int
+  status     TicketStatus @default(Actual)
+  createdAt  DateTime     @default(now())
 }

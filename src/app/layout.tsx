@@ -4,8 +4,8 @@ import "./globals.scss";
 import { SessionProvider } from "next-auth/react";
 import { Nunito } from "next/font/google";
 
-import { Providers } from "../components/providers/Providers";
-import { auth } from "../config/auth";
+import { auth } from "../config/auth.config";
+import { Providers } from "./_module/components/Providers";
 
 const nunito = Nunito({
   subsets: ["latin"],
