@@ -79,6 +79,8 @@ enum ScheduleStatus {
   Canceled
 }
 
+// Schedule model uses JSON for seats scheme, 
+// but typificated as string because Prisma types make code logic too hard to read 
 model Schedule {
   id        String         @id @default(uuid())
   movie     Movie          @relation(fields: [movieId], references: [id])
@@ -87,7 +89,7 @@ model Schedule {
   endTime   DateTime
   price     Int
   hall      Int
-  seats     Json           @db.JsonB // because seats is a matrix
+  seats     String
   status    ScheduleStatus @default(Sale)
   tikets    Ticket[]
   createdAt DateTime       @default(now())

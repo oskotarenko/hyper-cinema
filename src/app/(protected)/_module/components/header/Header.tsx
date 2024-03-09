@@ -13,7 +13,7 @@ export default function AppHeader() {
   const user = useUser();
 
   return (
-    <header className="flex justify-between gap-2 w-full h-fit p-2 items-center sticky top-0 left-0 bg-background/20 z-10 backdrop-blur-[2px]">
+    <header className="flex justify-between gap-2 w-full h-fit p-2 items-center sticky top-0 left-0 bg-background/80 z-10 backdrop-blur-[2px]">
       <SearchInput />
       <div className="[&>a]:flex-none flex gap-2">
         <AdminPanelLink />

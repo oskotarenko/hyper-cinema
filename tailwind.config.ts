@@ -20,6 +20,7 @@ const config = {
         "desktop-sm": "1280px",
         "desktop-md": "1440px",
         "desktop-lg": "2560px",
+        "desktop-xl": ""
       },
       colors: {
         primary: '#63f655',

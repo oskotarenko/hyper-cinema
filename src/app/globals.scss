@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "@/shared/styles/popup.scss";
+
 html {
   -webkit-tap-highlight-color: transparent;
 }

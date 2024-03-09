@@ -2,7 +2,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { NavRoute } from "@/config/routes";
+import { NavRoute } from "../../constants/constants";
 
 type Props = {
   route: NavRoute;

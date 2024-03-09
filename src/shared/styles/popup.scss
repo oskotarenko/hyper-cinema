@@ -1,0 +1,76 @@
+.popup-content {
+  border: none !important;
+  width: fit-content !important;
+  padding: 0 !important;
+  background: #000 !important;
+}
+
+.modal-content {
+  div {
+    width: 60vw !important;
+    height: calc(60vw / 16 * 9) !important;
+  }
+
+  @media (width <=768px) {
+    & div {
+      width: 75vw !important;
+      height: calc(75vw / 16 * 9) !important;
+    }
+  }
+
+  @media (width <=425px) {
+    & div {
+      width: 90vw !important;
+      height: calc(90vw / 16 * 9) !important;
+    }
+  }
+}
+
+.modal-overlay {
+  // @apply bg-black/30 backdrop:blur-sm;
+  background: rgba(0, 0, 0, 0.7) !important;
+}
+
+[role="tooltip"].modal-content {
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.dropdown-content {
+  @apply text-center;
+  width: 9rem !important;
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
+  border-radius: 50px !important;
+  margin-top: 0.5rem !important;
+  animation: appearance 0.2s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+  z-index: 5 !important;
+
+  @media (width <=640px) {
+    width: 6rem !important;
+  }
+
+  @keyframes appearance {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+.dropdown-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+[role="tooltip"].dropdown-content {
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+[data-popup="tooltip"].dropdown-overlay {
+  background: transparent;
+}

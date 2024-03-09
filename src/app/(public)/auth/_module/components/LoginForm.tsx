@@ -27,9 +27,7 @@ export function LoginForm() {
     startPending(async () => {
       const response = await login(formData, callbackUrl);
 
-      if ("error" in response) {
-        setError(response.error);
-      }
+      if (response && "error" in response) setError(response.error);
     });
   };
 

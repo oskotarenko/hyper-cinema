@@ -14,7 +14,7 @@ export async function uploadFile(file: File) {
         if (error) {
           reject(error);
         } else {
-          resolve(result);
+          resolve(result as UploadApiResponse | PromiseLike<UploadApiResponse>);
         }
       })
       .end(array);

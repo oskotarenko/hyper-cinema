@@ -8,7 +8,7 @@ import {
 
 const { auth } = NextAuth(authConfig);
 
-export default auth(async (req) => {
+export default auth((req) => {
   const { nextUrl } = req;
   const isLoggedIn = !!req.auth;
 
@@ -17,7 +17,7 @@ export default auth(async (req) => {
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
   if (isApiAuthRoute) {
-    return null;
+    return;
   }
 
   if (isAuthRoute) {
@@ -25,7 +25,7 @@ export default auth(async (req) => {
       return Response.redirect(new URL(DEFAULT_LOGGED_IN_REDIRECT, nextUrl));
     }
 
-    return null;
+    return;
   }
 
   if (!isLoggedIn && !isPublicRoute) {
@@ -39,7 +39,7 @@ export default auth(async (req) => {
     return Response.redirect(new URL(`${DEFAULT_AUTH_REDIRECT}?callbackUrl=${encodedCallbackurl}`, nextUrl));
   }
 
-  return null;
+  return;
 })
 
 export const config = {

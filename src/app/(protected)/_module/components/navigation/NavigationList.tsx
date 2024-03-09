@@ -1,7 +1,6 @@
 "use client";
 
-import { navRoutes } from "@/config/routes";
-
+import { navRoutes } from "../../constants/constants";
 import { AppNavigationListItem } from "./NavigationListItem";
 
 export function AppNavigationList() {

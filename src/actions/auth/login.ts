@@ -7,7 +7,7 @@ import { LoginScheme, } from "@/app/(public)/auth/_module/schemes/login.scheme";
 import { signIn, } from "@/config/auth.config";
 import { DEFAULT_LOGGED_IN_REDIRECT, } from "@/config/routes";
 
-export async function login(formData: FormData, callbackUrl: string | null): Promise<{ error: string }> {
+export async function login(formData: FormData, callbackUrl: string | null): Promise<{ error: string } | void> {
   const validatedFields = LoginScheme.safeParse({
     email: formData.get("email"),
     password: formData.get("password")

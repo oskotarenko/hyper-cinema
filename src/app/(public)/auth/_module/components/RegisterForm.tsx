@@ -20,7 +20,7 @@ export function RegisterForm() {
     startPending(async () => {
       const response = await register(formData);
 
-      if ("error" in response) {
+      if (response && "error" in response) {
         toast.error(response.error);
         return;
       }

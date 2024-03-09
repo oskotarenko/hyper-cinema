@@ -17,7 +17,7 @@ export function SearchInput() {
     if (!search && !isDirty) return;
     else if (!search) router.push("/movies");
     else router.push(`/movies?search=${search}`);
-  }, [search]);
+  }, [search, getFieldState, router]);
 
   const handleReset = () => {
     setValue("search-field", "");

@@ -13,7 +13,7 @@ export default function AdminPage() {
           <Link href={`/movies/${process.env.MOVIES_ADMIN_URL}`}>
             <Button variant="outline">Movies</Button>
           </Link>
-          <Link href={`/schedules/${process.env.SCHEDULES_ADMIN_URL}`}>
+          <Link href={`/schedule/${process.env.SCHEDULES_ADMIN_URL}`}>
             <Button variant="outline">Schedules</Button>
           </Link>
           <Link href={`/tickets/${process.env.TICKETS_ADMIN_URL}`}>

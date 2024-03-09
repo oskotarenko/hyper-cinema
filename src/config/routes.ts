@@ -1,5 +1,3 @@
-import { Clapperboard, HelpCircle, Home, ListOrdered, LucideIcon, } from "lucide-react";
-
 /** 
  * An array of routes that are accessible to the public
  * These routes do not require authentification
@@ -7,6 +5,7 @@ import { Clapperboard, HelpCircle, Home, ListOrdered, LucideIcon, } from "lucide
  */
 export const publicRoutes: string[] = [
   "/",
+  "/about"
 ]
 
 /**
@@ -38,21 +37,14 @@ export const DEFAULT_LOGGED_IN_REDIRECT: string = "/home"
  */
 export const DEFAULT_AUTH_REDIRECT: string = "/auth/login"
 
-
-export type NavRoute = {
-  href: string;
-  title: string;
-  icon: LucideIcon;
-}
-
 /**
- * Navigation routes for sidebar on pages, which available after authorization
- * @type {NavRoute[]}
+ * List of all major application paths to use in links
+ * @enum {string}
  */
-
-export const navRoutes: NavRoute[] = [
-  { href: "/home", title: "Home", icon: Home },
-  { href: "/movies", title: "Movies", icon: Clapperboard },
-  { href: "/schedules", title: "Schedules", icon: ListOrdered },
-  { href: "/faq", title: "FAQ", icon: HelpCircle }
-]
+export enum AppRputes {
+  Index = "/",
+  Home = "/home",
+  Movies = "/movies",
+  Schedule = "/schedule",
+  About = "/about"
+}
