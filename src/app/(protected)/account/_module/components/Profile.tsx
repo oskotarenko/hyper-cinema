@@ -16,7 +16,7 @@ export function Profile({ profile }: Props) {
 
   const handleLogout = async () => {
     await logout();
-    router.push(AppRoutes.Index);
+    router.push(AppRoutes.Login);
   };
 
   return (

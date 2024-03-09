@@ -3,22 +3,13 @@ import clsx from "clsx";
 import { getFullSchedule } from "@/actions/schedule/get-full-schedule";
 import { Table, TableColumn } from "@/shared/ui/table";
 
-import { GenerateSchedulesButton } from "./_module/components/GenerateSchedulesButton";
 import { ScheduleStatusButton } from "./_module/components/ScheduleStatusButton";
 
 export default async function AdminSchedulePage() {
   const schedules = await getFullSchedule();
   return (
     <div className="w-full flex flex-col gap-4">
-      <Table
-        data={schedules}
-        title={
-          <div className="flex gap-2 items-center text-nowrap">
-            All Schedules <GenerateSchedulesButton />
-          </div>
-        }
-        emptyMessage="No schdules found..."
-      >
+      <Table data={schedules} title="All Schedules" emptyMessage="No schdules found...">
         <TableColumn title="Id">
           {schedules.map((schedule) => (
             <p key={schedule.id}>{schedule.id}</p>

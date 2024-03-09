@@ -3,12 +3,12 @@ import toast from "react-hot-toast";
 
 /**
  * This function creates valid server action response object.
- * Takes two arguments of type string or null, and one and only one must be a string, otherwise, function will throw an Illegal Aregument Exception.
- * @returns Valid server action response object {success: string, error: string}
+ * Takes two arguments of type string or null, and one and only one must be a string
+ * @throws Illegal Argument Exception if both arguments are null or both arguments are not null
  */
 export function response(success: string | null, error: string | null): ActionResponse {
   if ((success === null && error === null) || (success !== null && error !== null))
-    throw new Error("Invalid response exception");
+    throw new Error("Illegal Argument Exception");
 
   return { success, error };
 }

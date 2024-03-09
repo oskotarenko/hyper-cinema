@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { NothingFound } from "@/app/(protected)/_module/components/nothing-found/NothingFound";
-import { ISOToDayMonth } from "@/shared/services/date.service";
+import { DatetoDayMonth } from "@/shared/services/date.service";
 import { Schedule } from "@prisma/client";
 
 import { ScheduleMenuBody } from "./ScheduleMenuBody";
@@ -17,7 +17,7 @@ export function ScheduleMenu({ schedules }: Props) {
     new Set(
       schedules
         .filter((schedule) => new Date(schedule.startTime).getTime() > new Date().getTime())
-        .map((schedule) => ISOToDayMonth(schedule.startTime.toISOString())),
+        .map((schedule) => DatetoDayMonth(schedule.startTime)),
     ),
   );
 

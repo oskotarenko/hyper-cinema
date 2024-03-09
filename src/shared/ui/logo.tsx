@@ -1,17 +1,20 @@
 "use client";
+import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "public/logo.svg";
 
 import { AppRoutes } from "@/config/routes";
 
-import { useUser } from "../hooks/useUser";
-
-export function Logo() {
-  const user = useUser();
-
+type Props = {
+  hideOnMobile: boolean;
+};
+export function Logo({ hideOnMobile }: Props) {
   return (
-    <Link href={user ? AppRoutes.Home : AppRoutes.Index} className="w-full hidden tablet:flex items-center gap-2 px-2">
+    <Link
+      href={AppRoutes.Home}
+      className={clsx("w-full flex items-center gap-2 px-2", hideOnMobile && "hidden tablet:flex")}
+    >
       <Image
         src={logo}
         width={100}

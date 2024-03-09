@@ -13,14 +13,16 @@ import { getTicketById, } from "./get-ticket-by-id";
 /**
  * @used_in TicketRefundButton.tsx
  */
-export async function refundTicket(ticketId: string): Promise<ActionResponse> {
+export async function refundTicket(ticketId: string, skipAuth?: boolean): Promise<ActionResponse> {
   const ticket = await getTicketById(ticketId);
   if (!ticket) return response(null, "Ticket not found");
 
   const schedule = await getScheduleById(ticket.scheduleId);
 
-  const session = await auth();
-  if (session.user.id !== ticket.ownerId || ticket.status !== "Actual") return response(null, "You can’t refund this ticket");
+  if (!skipAuth) {
+    const session = await auth();
+    if (session.user.id !== ticket.ownerId || ticket.status !== "Actual") return response(null, "You can’t refund this ticket");
+  }
 
   const isSeatUnbooked = await unbookSeatInHall(schedule, ticket.row, ticket.col);
   if (!isSeatUnbooked) return response(null, "Something went wrong during unbooking seat");

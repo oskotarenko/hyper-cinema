@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { getMovieById } from "@/actions/movies/get-movie-by-id";
 import { AppRoutes } from "@/config/routes";
-import { ISOToHoursMinutesDayMonth } from "@/shared/services/date.service";
+import { DatetoString } from "@/shared/services/date.service";
 import { Schedule } from "@prisma/client";
 
 type Props = {
@@ -27,7 +27,7 @@ export async function ScheduleCard({ schedule }: Props) {
         />
 
         <p className="text-sm p-1 text-center text-black font-semibold rounded-md bg-primary">
-          {ISOToHoursMinutesDayMonth(schedule.startTime.toISOString())}
+          {DatetoString(schedule.startTime)}
         </p>
       </div>
     </Link>

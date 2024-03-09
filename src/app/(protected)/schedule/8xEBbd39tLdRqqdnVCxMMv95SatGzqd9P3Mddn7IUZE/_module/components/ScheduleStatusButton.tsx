@@ -12,21 +12,22 @@ type Props = {
 
 export function ScheduleStatusButton({ schedule }: Props) {
   const onClick = async () => {
-    const response = await updateScheduleStatus(schedule.id);
+    const response = await updateScheduleStatus(schedule.id, "Canceled");
     extractResponse(response);
   };
 
   return (
     <button
-      disabled={schedule.status === "Completed"}
+      disabled={schedule.status === "Completed" || schedule.status === "Canceled"}
       onClick={onClick}
       className={clsx(
         "block font-bold hover:text-primary hover:border-primary hover-colors",
         schedule.status === "Sale" && "hover:text-red-500 hover:border-red-500",
-        schedule.status === "Completed" && "text-white/80 border-white/80 hover:text-white/80 hover:border-white/80",
+        (schedule.status === "Completed" || schedule.status === "Canceled") &&
+          "text-white/50 border-white/50 hover:text-white/50 hover:border-white/50",
       )}
     >
-      {schedule.status === "Sale" ? "Cancel" : "Resume sale"}
+      Cancel
     </button>
   );
 }

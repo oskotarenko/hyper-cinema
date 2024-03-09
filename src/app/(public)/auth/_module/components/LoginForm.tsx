@@ -3,7 +3,6 @@
 import { AtSign, Lock } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useTransition } from "react";
 
 import { login } from "@/actions/auth/login";
 import { AppRoutes } from "@/config/routes";
@@ -20,13 +19,10 @@ export function LoginForm() {
   const urlError =
     searchParams.get("error") === "OAuthAccountNotLinked" ? "Email is already in use with different provider" : "";
   const callbackUrl = searchParams.get("callbackUrl");
-  const [isPending, startPending] = useTransition();
 
-  const handleLogin = (formData: FormData) => {
-    startPending(async () => {
-      const response = await login(formData, callbackUrl);
-      extractResponse(response);
-    });
+  const handleLogin = async (formData: FormData) => {
+    const response = await login(formData, callbackUrl);
+    extractResponse(response);
   };
 
   return (
@@ -42,9 +38,7 @@ export function LoginForm() {
       <Divider type="horizontal" color="white" />
       <OAuthButton />
       <Link href={AppRoutes.Register}>
-        <Button variant="link" disabled={isPending}>
-          Don’t have an account?
-        </Button>
+        <Button variant="link">Don’t have an account?</Button>
       </Link>
     </div>
   );

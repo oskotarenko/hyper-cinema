@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { AppRoutes } from "@/config/routes";
-import { ISOToHoursMinutesDayMonth } from "@/shared/services/date.service";
+import { DatetoString } from "@/shared/services/date.service";
 import { Button } from "@/shared/ui/button";
 import { Movie, Schedule } from "@prisma/client";
 
@@ -23,14 +23,14 @@ export default async function ScheduleData({ schedule, movie }: Props) {
           <h3>{movie.title}</h3>
           <p className=" pt-1.5 pb-1  text-sm font-bold">{movie.restrictions}+</p>
           <div className="flex flex-col gap-1.5 mt-auto">
-            <h1>{ISOToHoursMinutesDayMonth(schedule.startTime.toString())}</h1>
+            <h1>{DatetoString(schedule.startTime)}</h1>
             <h3>Hall {schedule.hall}</h3>
             <h4>Duration {movie.duration} minutes</h4>
           </div>
         </div>
       </div>
       <div className="mt-4 w-3/4 lg:w-full">
-        <Link href={`/movies/${movie.id}`}>
+        <Link href={`${AppRoutes.Movies}/${movie.id}`}>
           <Button variant="outline" icon={ChevronLeft}>
             Choose another session
           </Button>

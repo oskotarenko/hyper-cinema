@@ -2,7 +2,6 @@
 
 import { AtSign, Lock, Pen } from "lucide-react";
 import Link from "next/link";
-import { useTransition } from "react";
 
 import { register } from "@/actions/auth/register";
 import { AppRoutes } from "@/config/routes";
@@ -15,13 +14,9 @@ import { Input } from "@/shared/ui/input";
 import { OAuthButton } from "./OAuthButton";
 
 export function RegisterForm() {
-  const [isPending, startPending] = useTransition();
-
-  const handleRegister = (formData: FormData) => {
-    startPending(async () => {
-      const response = await register(formData);
-      extractResponse(response);
-    });
+  const handleRegister = async (formData: FormData) => {
+    const response = await register(formData);
+    extractResponse(response);
   };
 
   return (
@@ -37,9 +32,7 @@ export function RegisterForm() {
       <Divider type="horizontal" color="white" />
       <OAuthButton />
       <Link href={AppRoutes.Login}>
-        <Button variant="link" disabled={isPending}>
-          Already have an account?
-        </Button>
+        <Button variant="link">Already have an account?</Button>
       </Link>
     </div>
   );

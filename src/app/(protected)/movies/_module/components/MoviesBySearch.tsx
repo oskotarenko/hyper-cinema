@@ -1,6 +1,6 @@
 import { getMoviesByQuery } from "@/actions/movies/get-movies-by-query";
 import { NothingFound } from "@/app/(protected)/_module/components/nothing-found/NothingFound";
-import MoviesBlock from "@/app/_module/components/MoviesBlock";
+import MoviesBlock from "@/shared/components/MoviesBlock";
 
 type Props = {
   search: string;

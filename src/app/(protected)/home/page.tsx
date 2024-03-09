@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 import { getMoviesSorted } from "@/actions/movies/get-movies-sorted";
-import MoviesBlock from "@/app/_module/components/MoviesBlock";
 import { AppRoutes } from "@/config/routes";
+import MoviesBlock from "@/shared/components/MoviesBlock";
 import { Button } from "@/shared/ui/button";
 
 import { HomeBanner } from "./_module/components/home-banner/HomeBanner";

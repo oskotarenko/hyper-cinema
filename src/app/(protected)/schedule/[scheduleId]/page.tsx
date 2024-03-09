@@ -16,7 +16,7 @@ type Props = {
   };
 };
 export default async function ScheduleDetailsPage({ params }: Props) {
-  const schedule = await getScheduleById(params.scheduleId, true);
+  const schedule = await getScheduleById(params.scheduleId);
   if (!schedule) return <NothingFound title="Scheduled session not found" message="" />;
 
   const movie = await getMovieById(schedule.movieId);

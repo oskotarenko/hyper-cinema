@@ -3,10 +3,10 @@
  * These routes do not require authentification
  * @type {string[]}
  */
-export const publicRoutes: string[] = [
-  "/",
-  "/about"
-]
+// export const publicRoutes: string[] = [
+//   "/",
+//   "/about"
+// ]
 
 /**
  * An array of routes that are used for authentification
@@ -42,7 +42,6 @@ export const DEFAULT_AUTH_REDIRECT: string = "/auth/login"
  * @enum {string}
  */
 export enum AppRoutes {
-  Index = "/",
   Home = "/home",
   Movies = "/movies",
   Schedule = "/schedule",

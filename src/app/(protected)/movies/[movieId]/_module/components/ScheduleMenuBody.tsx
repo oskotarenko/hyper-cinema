@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import { AppRoutes } from "@/config/routes";
-import { ISOToHoursMinutes } from "@/shared/services/date.service";
+import { DatetoHoursMinutes } from "@/shared/services/date.service";
 import { Button } from "@/shared/ui/button";
 import { Schedule } from "@prisma/client";
 
@@ -18,7 +18,7 @@ export function ScheduleMenuBody({ displaySchedules }: Props) {
           <div key={schedule.id}>
             <Link href={`${AppRoutes.Schedule}/${schedule.id}`}>
               <Button variant="outline" key={schedule.id}>
-                {ISOToHoursMinutes(schedule.startTime.toISOString())}
+                {DatetoHoursMinutes(schedule.startTime)}
               </Button>
             </Link>
           </div>

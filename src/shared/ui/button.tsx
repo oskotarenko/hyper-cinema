@@ -7,7 +7,6 @@ type Props = {
   onClick?: () => void;
   variant: "filled" | "outline" | "link";
   icon?: LucideIcon;
-  disabled?: boolean;
   type?: "submit" | "reset" | "button";
   classname?: string;
 };
@@ -23,7 +22,6 @@ export function Button({ children, onClick, ...props }: Props) {
         props.classname,
       )}
       onClick={onClick}
-      disabled={props.disabled}
       type={props.type || "button"}
     >
       {props.icon && <props.icon />}
