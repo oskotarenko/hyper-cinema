@@ -4,7 +4,6 @@ import { database, } from "@/config/database.config";
 
 export async function getMoviesByQuery(search: string) {
   const movies = await database.movie.findMany({
-
     where: {
       status: "Released",
       OR: [
@@ -16,7 +15,7 @@ export async function getMoviesByQuery(search: string) {
         { director: { search, mode: "insensitive" } }
       ],
     }
-  })
+  });
 
   return movies
 }
