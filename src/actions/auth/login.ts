@@ -6,20 +6,33 @@ import { getUserByEmail, } from "@/actions/user/get-user-by-email";
 import { LoginScheme, } from "@/app/(public)/auth/_module/schemes/login.scheme";
 import { signIn, } from "@/config/auth.config";
 import { DEFAULT_LOGGED_IN_REDIRECT, } from "@/config/routes";
+import { handleValidationError, } from "@/shared/services/handle-validation.service";
+import { response, } from "@/shared/services/response.service";
+import { ActionResponse, } from "@/types/action-response";
 
-export async function login(formData: FormData, callbackUrl: string | null): Promise<{ error: string } | void> {
-  const validatedFields = LoginScheme.safeParse({
+/**
+ * Server-action of authorization
+ * @param formData FormData
+ * @param callbackUrl string
+ * @used_in actions/auth/register.ts | LoginForm.tsx
+ */
+export async function login(formData: FormData, callbackUrl: string | null): Promise<ActionResponse> {
+  const validated = LoginScheme.safeParse({
     email: formData.get("email"),
     password: formData.get("password")
   });
 
-  if (!validatedFields.success) return { error: "Invalid fileds" }
+  if (!validated.success) {
+    return "error" in validated
+      ? handleValidationError(validated)
+      : response(null, "Invalid Fields");
+  }
 
-  const { email, password } = validatedFields.data;
+  const { email, password } = validated.data;
 
   const existingUser = await getUserByEmail(email);
   if (!existingUser || !existingUser.email || !existingUser.password)
-    return { error: "User not found" }
+    return response(null, "User not found")
 
   try {
     await signIn("credentials",
@@ -31,8 +44,7 @@ export async function login(formData: FormData, callbackUrl: string | null): Pro
     )
   } catch (error) {
     if (error instanceof AuthError) {
-
-      return error.type === "CredentialsSignin" ? { error: "Invalid credentials" } : { error: "Something went wrong" }
+      return response(null, error.type === "CredentialsSignin" ? "Invalid credentials" : "Something went wrong")
     } else {
       throw error;
     }

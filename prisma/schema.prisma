@@ -80,16 +80,15 @@ enum ScheduleStatus {
   Canceled
 }
 
-// Schedule model uses JSON for seats scheme, 
-// but typificated as string because Prisma types make code logic too hard to read 
 model Schedule {
   id        String         @id @default(uuid())
-  movie     Movie          @relation(fields: [movieId], references: [id])
+  movie     Movie          @relation(fields: [movieId], references: [id], onDelete: Cascade)
   movieId   String
   startTime DateTime
   endTime   DateTime
   price     Int
   hall      Int
+  // seats is a JSON boolean[][], but typificated as string because Prisma types make code logic too hard to read 
   seats     String
   status    ScheduleStatus @default(Sale)
   tikets    Ticket[]
@@ -104,9 +103,9 @@ enum TicketStatus {
 
 model Ticket {
   id         String       @id @default(uuid())
-  schedule   Schedule     @relation(fields: [scheduleId], references: [id])
+  schedule   Schedule     @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
   scheduleId String
-  owner      User         @relation(fields: [ownerId], references: [id])
+  owner      User         @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   ownerId    String
   row        Int
   col        Int

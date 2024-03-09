@@ -1,7 +1,6 @@
 import bcrypt from "bcryptjs";
 import NextAuth, { NextAuthConfig, } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import Github from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 
 import { getAccountByUserId, } from "@/actions/account/get-account-by-user-id";
@@ -14,10 +13,6 @@ import { UserRole, } from "@prisma/client";
 
 export const authConfig: NextAuthConfig = {
   providers: [
-    Github({
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET
-    }),
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,

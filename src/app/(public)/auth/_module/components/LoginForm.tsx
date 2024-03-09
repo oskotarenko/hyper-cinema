@@ -3,15 +3,16 @@
 import { AtSign, Lock } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useState, useTransition } from "react";
+import { useTransition } from "react";
 
 import { login } from "@/actions/auth/login";
+import { extractResponse } from "@/shared/services/response.service";
 import { Button } from "@/shared/ui/button";
 import { Divider } from "@/shared/ui/divider";
 import { Form, FormMessage } from "@/shared/ui/form";
 import { Input } from "@/shared/ui/input";
 
-import { OAuthButtons } from "./OAuthButtons";
+import { OAuthButton } from "./OAuthButton";
 
 export function LoginForm() {
   const searchParams = useSearchParams();
@@ -19,15 +20,11 @@ export function LoginForm() {
     searchParams.get("error") === "OAuthAccountNotLinked" ? "Email is already in use with different provider" : "";
   const callbackUrl = searchParams.get("callbackUrl");
   const [isPending, startPending] = useTransition();
-  const [error, setError] = useState<string>("");
 
   const handleLogin = (formData: FormData) => {
-    setError("");
-
     startPending(async () => {
       const response = await login(formData, callbackUrl);
-
-      if (response && "error" in response) setError(response.error);
+      extractResponse(response);
     });
   };
 
@@ -36,13 +33,13 @@ export function LoginForm() {
       <Form action={handleLogin} title="Login">
         <Input Icon={AtSign} name="email" placeholder="Email" type="email" autoComplete="off" />
         <Input Icon={Lock} name="password" placeholder="Password" type="password" autoComplete="off" />
-        <FormMessage type="error" message={error || urlError} />
+        <FormMessage type="error" message={urlError} />
         <Button variant="filled" type="submit">
           Login
         </Button>
       </Form>
       <Divider type="horizontal" color="white" />
-      <OAuthButtons />
+      <OAuthButton />
       <Link href={"/auth/register"}>
         <Button variant="link" disabled={isPending}>
           Don’t have an account?

@@ -3,15 +3,15 @@
 import { AtSign, Lock, Pen } from "lucide-react";
 import Link from "next/link";
 import { useTransition } from "react";
-import toast from "react-hot-toast";
 
 import { register } from "@/actions/auth/register";
+import { extractResponse } from "@/shared/services/response.service";
 import { Button } from "@/shared/ui/button";
 import { Divider } from "@/shared/ui/divider";
 import { Form } from "@/shared/ui/form";
 import { Input } from "@/shared/ui/input";
 
-import { OAuthButtons } from "./OAuthButtons";
+import { OAuthButton } from "./OAuthButton";
 
 export function RegisterForm() {
   const [isPending, startPending] = useTransition();
@@ -19,11 +19,7 @@ export function RegisterForm() {
   const handleRegister = (formData: FormData) => {
     startPending(async () => {
       const response = await register(formData);
-
-      if (response && "error" in response) {
-        toast.error(response.error);
-        return;
-      }
+      extractResponse(response);
     });
   };
 
@@ -38,7 +34,7 @@ export function RegisterForm() {
         </Button>
       </Form>
       <Divider type="horizontal" color="white" />
-      <OAuthButtons />
+      <OAuthButton />
       <Link href={"/auth/login"}>
         <Button variant="link" disabled={isPending}>
           Already have an account?

@@ -6,23 +6,39 @@ import { login, } from "@/actions/auth/login";
 import { getUserByEmail, } from "@/actions/user/get-user-by-email";
 import { RegisterScheme, } from "@/app/(public)/auth/_module/schemes/register.scheme";
 import { database, } from "@/config/database.config";
+import { handleValidationError, } from "@/shared/services/handle-validation.service";
+import { response, } from "@/shared/services/response.service";
+import { ActionResponse, } from "@/types/action-response";
 
-export async function register(formData: FormData) {
-  const validatedFields = RegisterScheme.safeParse({
+/**
+ * Server-action of authorization
+ * @param formData FormData
+ * @param callbackUrl string
+ * @used_in actions/auth/register.ts | LoginForm.tsx
+ */
+
+/**
+ * Server-action of registration using credentials
+ * @param formData FormData
+  @used_in RegisterForm.tsx
+ */
+export async function register(formData: FormData): Promise<ActionResponse> {
+  const validated = RegisterScheme.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
     name: formData.get("name")
   });
 
-  if (!validatedFields.success) return { error: "Invalid fileds" }
+  if (!validated.success) {
+    return "error" in validated
+      ? handleValidationError(validated)
+      : response(null, "Invalid Fields");
+  }
 
-  const { email, password, name } = validatedFields.data;
-
-  if (!email || !password || !name)
-    return { error: "Invalid fields" };
+  const { email, password, name } = validated.data;
 
   const isEmailTaken = !!await getUserByEmail(email);
-  if (isEmailTaken) return { error: "Email already in use" };
+  if (isEmailTaken) return response(null, "Email is alredy in use");
 
   const hashPassword = await bcrypt.hash(password, 10);
 
