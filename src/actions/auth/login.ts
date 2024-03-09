@@ -11,9 +11,6 @@ import { response, } from "@/shared/services/response.service";
 import { ActionResponse, } from "@/types/action-response";
 
 /**
- * Server-action of authorization
- * @param formData FormData
- * @param callbackUrl string
  * @used_in actions/auth/register.ts | LoginForm.tsx
  */
 export async function login(formData: FormData, callbackUrl: string | null): Promise<ActionResponse> {

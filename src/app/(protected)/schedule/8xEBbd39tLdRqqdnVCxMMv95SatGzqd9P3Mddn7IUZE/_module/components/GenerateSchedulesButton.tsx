@@ -1,12 +1,12 @@
 "use client";
 
-import { generateSchedules } from "@/actions/schedule/generate-schedules";
+import { generateSchedule } from "@/actions/schedule/generate-schedule";
 import { extractResponse } from "@/shared/services/response.service";
 import { Button } from "@/shared/ui/button";
 
 export function GenerateSchedulesButton() {
   const handleGenerateSchedules = async () => {
-    const response = await generateSchedules();
+    const response = await generateSchedule();
     extractResponse(response);
   };
 

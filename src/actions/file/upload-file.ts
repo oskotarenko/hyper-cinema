@@ -4,6 +4,9 @@ import "@/config/cloudinary.config";
 
 import { UploadApiResponse, v2 as cloudinary, } from "cloudinary";
 
+/**
+ * @used_in actions/movie/create-movie.ts
+ */
 export async function uploadFile(file: File) {
   const buffer = await file.arrayBuffer();
   const array = new Uint8Array(buffer);

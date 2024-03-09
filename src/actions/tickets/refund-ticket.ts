@@ -10,6 +10,9 @@ import { getScheduleById, } from "../schedule/get-schedule-by-id";
 import { unbookSeatInHall, } from "../schedule/unbook-seat-in-hall";
 import { getTicketById, } from "./get-ticket-by-id";
 
+/**
+ * @used_in TicketRefundButton.tsx
+ */
 export async function refundTicket(ticketId: string): Promise<ActionResponse> {
   const ticket = await getTicketById(ticketId);
   if (!ticket) return response(null, "Ticket not found");

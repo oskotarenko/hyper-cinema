@@ -41,10 +41,16 @@ export const DEFAULT_AUTH_REDIRECT: string = "/auth/login"
  * List of all major application paths to use in links
  * @enum {string}
  */
-export enum AppRputes {
+export enum AppRoutes {
   Index = "/",
   Home = "/home",
   Movies = "/movies",
   Schedule = "/schedule",
-  About = "/about"
+  Account = "/account",
+  About = "/about",
+  Admin = "/admin",
+  Tickets = "/tickets",
+  Users = "/users",
+  Login = "/auth/login",
+  Register = "/auth/register"
 }

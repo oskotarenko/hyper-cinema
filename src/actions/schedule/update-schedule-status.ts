@@ -6,8 +6,11 @@ import { response, } from "@/shared/services/response.service";
 
 import { ActionResponse, } from "../../types/action-response";
 
-export async function updateScheduleStatus(id: string): Promise<ActionResponse> {
-  const schedule = await database.schedule.findUnique({ where: { id } });
+/**
+ * @used_in ScheduleStatusButton.tsx
+ */
+export async function updateScheduleStatus(scheduleId: string): Promise<ActionResponse> {
+  const schedule = await database.schedule.findUnique({ where: { id: scheduleId } });
   if (!schedule) return response(null, "Schedule not found");
   if (schedule.status === "Completed") return response(null, "Cannot update completed schedule");
 

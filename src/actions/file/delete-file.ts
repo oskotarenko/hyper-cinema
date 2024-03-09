@@ -2,9 +2,12 @@
 
 import { v2 as cloudinary, } from "cloudinary";
 
-export async function deleteFile(id: string): Promise<boolean> {
+/**
+ * @used_in not used yet
+ */
+export async function deleteFile(fileId: string): Promise<boolean> {
   const response = (await new Promise((resolve, reject) => {
-    cloudinary.uploader.destroy(id, (error, result) => {
+    cloudinary.uploader.destroy(fileId, (error, result) => {
       if (error) {
         reject(error);
       } else {

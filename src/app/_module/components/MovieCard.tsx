@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { AppRoutes } from "@/config/routes";
 import { Movie } from "@prisma/client";
 
 type Props = {
@@ -8,7 +9,7 @@ type Props = {
 };
 export function MovieCard({ movie }: Props) {
   return (
-    <Link href={`/movies/${movie.id}`} className="rounded-lg relative h-fit w-full">
+    <Link href={`${AppRoutes.Movies}/${movie.id}`} className="rounded-lg relative h-fit w-full">
       <div className="relative hover:[&>div]:opacity-100">
         <Image
           src={movie.poster}

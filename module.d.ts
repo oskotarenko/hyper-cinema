@@ -1,6 +1,5 @@
 declare namespace NodeJS {
   export interface ProcessEnv {
-
     DATABASE_URL: string
     DIRECT_URL: string
 
@@ -8,6 +7,10 @@ declare namespace NodeJS {
 
     GOOGLE_CLIENT_ID: string
     GOOGLE_CLIENT_SECRET: string
+
+    CLOUDINARY_NAME: string
+    CLOUDINARY_API_KEY: string
+    CLOUDINARY_API_SECRET: string
 
     USER_ADMIN_URL: string
     MOVIES_ADMIN_URL: string

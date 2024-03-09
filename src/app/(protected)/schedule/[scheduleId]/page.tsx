@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getMovieById } from "@/actions/movies/get-movie-by-id";
 import { getScheduleById } from "@/actions/schedule/get-schedule-by-id";
 import { NothingFound } from "@/app/(protected)/_module/components/nothing-found/NothingFound";
+import { AppRoutes } from "@/config/routes";
 import { Button } from "@/shared/ui/button";
 
 import { MovieData } from "../../_module/components/movie-data/MovieData";
@@ -25,7 +26,7 @@ export default async function ScheduleDetailsPage({ params }: Props) {
       <MovieData
         movie={movie}
         actionButton={
-          <Link href={`/movies/${movie.id}`}>
+          <Link href={`${AppRoutes.Movies}/${movie.id}`}>
             <Button variant="outline" icon={ChevronLeft}>
               All sessions
             </Button>

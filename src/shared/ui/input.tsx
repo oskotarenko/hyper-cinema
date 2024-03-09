@@ -28,9 +28,6 @@ type InputFileProps = {
   name: string;
   Icon: LucideIcon;
   accept: string;
-  // ? the eslint exception is used because the "no unused-vars" rule responds to formData: FormData,
-  // ? which is necessary for the correct typing of the component
-  // eslint-disable-next-line no-unused-vars
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 

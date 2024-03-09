@@ -4,9 +4,7 @@ import { database, } from "@/config/database.config";
 import { User, } from "@prisma/client";
 
 /**
- * This function searches for a user in the database by email
- * @param email string
- * @returns User or null
+ * @used_in actions/login.ts | actions/register.ts | config/auth.config.ts
  */
 export async function getUserByEmail(email: string): Promise<User | null> {
   try {

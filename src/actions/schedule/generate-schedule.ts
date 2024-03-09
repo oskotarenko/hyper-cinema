@@ -9,15 +9,19 @@ import { ActionResponse, } from "@/types/action-response";
 import {
   generateScheduleScheme as scheme, hallsScheme,
 } from "../../app/(protected)/schedule/8xEBbd39tLdRqqdnVCxMMv95SatGzqd9P3Mddn7IUZE/_module/constants/constants";
+import { getMoviesSorted, } from "../movies/get-movies-sorted";
 
-export async function generateSchedules(): Promise<ActionResponse> {
+/**
+ * @used_in GenerateScheduleButton.tsx
+ */
+export async function generateSchedule(): Promise<ActionResponse> {
   const now = new Date();
   const today = now.getTime()
     - now.getHours() * 60 * 60 * 1000
     - now.getMinutes() * 60 * 1000
     - now.getSeconds() * 1000;
 
-  const movies = await database.movie.findMany({ where: { status: "Released" } });
+  const movies = await getMoviesSorted();
 
   for (let day = 0; day < scheme.length; day++) {
     for (let item = 0; item < scheme[day].length; item++) {

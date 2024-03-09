@@ -12,12 +12,14 @@ import { bookSeatsInHall, } from "../schedule/book-seats-in-hall";
 import { getScheduleById, } from "../schedule/get-schedule-by-id";
 import { getUserById, } from "../user/get-user-by-id";
 
+/**
+ * @used_in PickedSeats.tsx
+ */
 export async function buyTickets(scheduleId: string, seats: Seat[]): Promise<ActionResponse> {
   const session = await auth();
-  if (!session) return response(null, "User not found");
-  const user = session.user;
-  if (!user.id) return response(null, "User not found");
-  const owner = await getUserById(user.id);
+  if (!session || !session.user.id) return response(null, "User not found");
+
+  const owner = await getUserById(session.user.id);
   if (!owner) return response(null, "User not found");
 
   const schedule = await getScheduleById(scheduleId);

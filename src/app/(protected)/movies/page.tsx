@@ -1,4 +1,4 @@
-import { getAllMoviesSorted } from "@/actions/movies/get-all-movies-sorted";
+import { getMoviesSorted } from "@/actions/movies/get-movies-sorted";
 
 import { Movies } from "./_module/components/Movies";
 
@@ -8,7 +8,7 @@ type Props = {
 
 export default async function MoviesPage({ searchParams }: Props) {
   const search = searchParams.search;
-  const movies = await getAllMoviesSorted();
+  const movies = await getMoviesSorted();
 
   return <Movies movies={movies} search={Array.isArray(search) ? search[0] : search} />;
 }

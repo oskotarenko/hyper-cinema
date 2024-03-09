@@ -1,6 +1,6 @@
+import { getAllUsers } from "@/actions/user/get-all-users";
 import { Table, TableColumn } from "@/shared/ui/table";
 
-import { getAllUsers } from "../../../../actions/user/get-all-users";
 import { RoleGate } from "../../_module/components/roles-gate/RolesGate";
 
 export default async function AdminUsersPage() {

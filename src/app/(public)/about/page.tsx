@@ -1,15 +1,12 @@
-import { LinkIcon, } from "lucide-react";
-import Image from "next/image";
+import { LinkIcon } from "lucide-react";
 import Link from "next/link";
-import logo from "public/logo.svg";
+
+import { Logo } from "@/shared/ui/logo";
 
 export default function AboutPage() {
   return (
     <div className="p-4 space-y-6 w-full h-full">
-      <Link href="/" className="flex gap-2 items-center">
-        <Image src={logo} alt="Hyper Cinema logo" width={50} height={50} className="w-[48px] h-48px" />
-        <h2 className="font-semibold">Hyper Cinema</h2>
-      </Link>
+      <Logo />
       <div className="space-y-4">
         <div>
           <h1 className="text-red-500">Disclaimer</h1>

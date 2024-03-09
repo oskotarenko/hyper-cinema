@@ -4,9 +4,7 @@ import { database, } from "@/config/database.config";
 import { User, } from "@prisma/client";
 
 /**
- * This function searches for a user in the database by ID
- * @param id string
- * @returns User or null
+ * @used_in actions/buy-tickets.ts | config/auth.config.ts
  */
 export async function getUserById(id: string): Promise<User | null> {
   try {

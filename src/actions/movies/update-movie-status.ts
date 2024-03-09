@@ -8,6 +8,9 @@ import { ActionResponse, } from "@/types/action-response";
 
 import { getMovieById, } from "./get-movie-by-id";
 
+/**
+ * @user_in app/(protected)/movies/{process.env.MOVIES_ADMIN_URL}
+ */
 export async function updateMovieStatus(id: string): Promise<ActionResponse> {
   const movie = await getMovieById(id);
   if (!movie) return response(null, "Movie not found");

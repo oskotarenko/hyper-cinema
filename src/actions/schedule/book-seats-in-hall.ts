@@ -4,6 +4,9 @@ import { Seat, } from "@/app/(protected)/schedule/[scheduleId]/_module/types/Sea
 import { database, } from "@/config/database.config";
 import { Schedule, } from "@prisma/client";
 
+/**
+ * @used_in actions/ticket/buy-tickets.ts
+ */
 export async function bookSeatsInHall(schedule: Schedule, seats: Seat[]): Promise<boolean> {
   const scheduleSeats: boolean[][] = JSON.parse(schedule.seats)
 

@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { useTransition } from "react";
 
 import { login } from "@/actions/auth/login";
+import { AppRoutes } from "@/config/routes";
 import { extractResponse } from "@/shared/services/response.service";
 import { Button } from "@/shared/ui/button";
 import { Divider } from "@/shared/ui/divider";
@@ -40,7 +41,7 @@ export function LoginForm() {
       </Form>
       <Divider type="horizontal" color="white" />
       <OAuthButton />
-      <Link href={"/auth/register"}>
+      <Link href={AppRoutes.Register}>
         <Button variant="link" disabled={isPending}>
           Don’t have an account?
         </Button>

@@ -1,14 +1,17 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "public/logo.svg";
 
-// TODO rewrite type to AppRoutes
-type Props = {
-  href: string;
-};
-export function Logo({ href }: Props) {
+import { AppRoutes } from "@/config/routes";
+
+import { useUser } from "../hooks/useUser";
+
+export function Logo() {
+  const user = useUser();
+
   return (
-    <Link href={href} className="w-full hidden tablet:flex items-center gap-2 px-2">
+    <Link href={user ? AppRoutes.Home : AppRoutes.Index} className="w-full hidden tablet:flex items-center gap-2 px-2">
       <Image
         src={logo}
         width={100}

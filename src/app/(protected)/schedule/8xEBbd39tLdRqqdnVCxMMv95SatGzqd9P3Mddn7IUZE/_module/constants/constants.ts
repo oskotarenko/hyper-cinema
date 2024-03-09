@@ -2,8 +2,9 @@ import { GenerateScheduleScheme, } from "../types/generate-shedules";
 
 import type { HallsScheme } from "../types/hall-scheme";
 
-export const HALL_QTY = 5;
-
+/**
+ * Halls scheme used to create seats matrix during creating schedule
+ */
 export const hallsScheme: HallsScheme[] = [
   { rows: 7, seats: [10, 10, 10, 10, 10, 10, 13], },
   { rows: 7, seats: [10, 10, 10, 10, 10, 10, 13], },
@@ -12,6 +13,9 @@ export const hallsScheme: HallsScheme[] = [
   { rows: 5, seats: [9, 9, 9, 9, 10], },
 ];
 
+/**
+ * Scheme to create schedule for each  week
+ */
 export const generateScheduleScheme: GenerateScheduleScheme[][] = [
   // Monday
   [

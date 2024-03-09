@@ -1,6 +1,6 @@
 "use client";
 
-import { refundTicket } from "@/actions/tickets/refundTicket";
+import { refundTicket } from "@/actions/tickets/refund-ticket";
 import { extractResponse } from "@/shared/services/response.service";
 import { Button } from "@/shared/ui/button";
 

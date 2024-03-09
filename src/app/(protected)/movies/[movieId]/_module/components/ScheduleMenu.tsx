@@ -12,7 +12,6 @@ import { ScheduleMenuHeader } from "./ScheduleMenuHeader";
 type Props = {
   schedules: Schedule[];
 };
-
 export function ScheduleMenu({ schedules }: Props) {
   const datesList = Array.from(
     new Set(
@@ -26,11 +25,13 @@ export function ScheduleMenu({ schedules }: Props) {
   const [displaySchedules, setDisplaySchedules] = useState<Schedule[]>(schedules);
 
   useEffect(() => {
-    const dateParts = currentDate.split(".");
-    const targetIsoDate = `${new Date().getFullYear()}-${dateParts[1]}-${dateParts[0]}`;
+    if (schedules.length) {
+      const dateParts = currentDate.split(".");
+      const targetIsoDate = `${new Date().getFullYear()}-${dateParts[1]}-${dateParts[0]}`;
 
-    const filteredSessions = schedules.filter((session) => session.startTime.toISOString().startsWith(targetIsoDate));
-    setDisplaySchedules(filteredSessions);
+      const filteredSessions = schedules.filter((session) => session.startTime.toISOString().startsWith(targetIsoDate));
+      setDisplaySchedules(filteredSessions);
+    }
   }, [currentDate, schedules]);
 
   if (!schedules.length)
@@ -39,7 +40,7 @@ export function ScheduleMenu({ schedules }: Props) {
   return (
     <div className="w-full space-y-2 bg-gray p-3 rounded-lg">
       <ScheduleMenuHeader datesList={datesList} currentDate={currentDate} setCurrentDate={setCurrentDate} />
-      <ScheduleMenuBody displaySessions={displaySchedules} />
+      <ScheduleMenuBody displaySchedules={displaySchedules} />
     </div>
   );
 }

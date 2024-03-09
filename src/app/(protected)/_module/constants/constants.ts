@@ -1,19 +1,19 @@
 import { Clapperboard, HelpCircle, Home, ListOrdered, LucideIcon, } from "lucide-react";
 
+import { AppRoutes, } from "@/config/routes";
+
 export type NavRoute = {
-  href: string;
+  href: AppRoutes;
   title: string;
   icon: LucideIcon;
 }
 
 /**
  * Navigation routes for sidebar on pages, which available after authorization
- * @type {NavRoute[]}
  */
-
 export const navRoutes: NavRoute[] = [
-  { href: "/home", title: "Home", icon: Home },
-  { href: "/movies", title: "Movies", icon: Clapperboard },
-  { href: "/schedule", title: "Schedule", icon: ListOrdered },
-  { href: "/about", title: "About", icon: HelpCircle }
+  { href: AppRoutes.Home, title: "Home", icon: Home },
+  { href: AppRoutes.Movies, title: "Movies", icon: Clapperboard },
+  { href: AppRoutes.Schedule, title: "Schedule", icon: ListOrdered },
+  { href: AppRoutes.About, title: "About", icon: HelpCircle }
 ]

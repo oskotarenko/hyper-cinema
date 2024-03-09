@@ -4,8 +4,6 @@ import toast from "react-hot-toast";
 /**
  * This function creates valid server action response object.
  * Takes two arguments of type string or null, and one and only one must be a string, otherwise, function will throw an Illegal Aregument Exception.
- * @param success string or null
- * @param error null or string
  * @returns Valid server action response object {success: string, error: string}
  */
 export function response(success: string | null, error: string | null): ActionResponse {
@@ -18,8 +16,6 @@ export function response(success: string | null, error: string | null): ActionRe
 /**
  * This function exposes messages from the server action.
  * Use only in client components!
- * @param res ActionResponse
- * @returns {void}
  */
 export function extractResponse(res: ActionResponse): string {
   if (res.success !== null)

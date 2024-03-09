@@ -1,18 +1,17 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, } from "next/navigation";
 
-import { buyTickets } from "@/actions/tickets/buy-tickets";
-import { extractResponse } from "@/shared/services/response.service";
-import { Button } from "@/shared/ui/button";
+import { buyTickets, } from "@/actions/tickets/buy-tickets";
+import { extractResponse, } from "@/shared/services/response.service";
+import { Button, } from "@/shared/ui/button";
 
-import { Seat } from "../../types/Seat";
+import { Seat, } from "../../types/Seat";
 
 type Props = {
   scheduleId: string;
   pickedSeats: Seat[];
   totalPrice: number;
-  // eslint-disable-next-line no-unused-vars
   removeSeat: (seat: Seat) => void;
 };
 

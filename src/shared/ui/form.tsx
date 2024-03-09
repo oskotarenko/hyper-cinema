@@ -3,9 +3,6 @@ import { AlertCircle, CheckCircle2, XCircle } from "lucide-react";
 import { ReactNode } from "react";
 
 type FormProps = {
-  // ? the eslint exception is used because the "no unused-vars" rule responds to formData: FormData,
-  // ? which is necessary for the correct typing of the component
-  // eslint-disable-next-line no-unused-vars
   action: (formData: FormData) => Promise<any> | any;
   children: ReactNode;
   title?: string;

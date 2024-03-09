@@ -4,6 +4,7 @@ import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 import { logout } from "@/actions/auth/logout";
+import { AppRoutes } from "@/config/routes";
 import { Button } from "@/shared/ui/button";
 import { Ticket, User } from "@prisma/client";
 
@@ -15,7 +16,7 @@ export function Profile({ profile }: Props) {
 
   const handleLogout = async () => {
     await logout();
-    router.push("/");
+    router.push(AppRoutes.Index);
   };
 
   return (

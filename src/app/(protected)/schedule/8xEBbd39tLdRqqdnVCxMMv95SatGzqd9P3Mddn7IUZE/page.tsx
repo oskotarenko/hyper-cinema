@@ -1,13 +1,13 @@
 import clsx from "clsx";
 
-import { getAllSchedules } from "@/actions/schedule/get-all-schedule";
+import { getFullSchedule } from "@/actions/schedule/get-full-schedule";
 import { Table, TableColumn } from "@/shared/ui/table";
 
 import { GenerateSchedulesButton } from "./_module/components/GenerateSchedulesButton";
 import { ScheduleStatusButton } from "./_module/components/ScheduleStatusButton";
 
 export default async function AdminSchedulePage() {
-  const schedules = await getAllSchedules();
+  const schedules = await getFullSchedule();
   return (
     <div className="w-full flex flex-col gap-4">
       <Table

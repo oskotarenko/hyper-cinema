@@ -5,9 +5,7 @@ type Props = {
   seatsOccupancy: boolean[];
   rowNumber: number;
   pickedSeats: SeatType[];
-  // eslint-disable-next-line no-unused-vars
   addSeat: (seat: SeatType) => void;
-  // eslint-disable-next-line no-unused-vars
   removeSeat: (seat: SeatType) => void;
 };
 

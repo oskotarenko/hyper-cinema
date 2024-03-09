@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useTransition } from "react";
 
 import { register } from "@/actions/auth/register";
+import { AppRoutes } from "@/config/routes";
 import { extractResponse } from "@/shared/services/response.service";
 import { Button } from "@/shared/ui/button";
 import { Divider } from "@/shared/ui/divider";
@@ -35,7 +36,7 @@ export function RegisterForm() {
       </Form>
       <Divider type="horizontal" color="white" />
       <OAuthButton />
-      <Link href={"/auth/login"}>
+      <Link href={AppRoutes.Login}>
         <Button variant="link" disabled={isPending}>
           Already have an account?
         </Button>

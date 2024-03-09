@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { getMovieById } from "@/actions/movies/get-movie-by-id";
+import { AppRoutes } from "@/config/routes";
 import { ISOToHoursMinutesDayMonth } from "@/shared/services/date.service";
 import { Schedule } from "@prisma/client";
 
@@ -13,7 +14,7 @@ export async function ScheduleCard({ schedule }: Props) {
   const movie = await getMovieById(schedule.movieId);
   return (
     <Link
-      href={`/schedule/${schedule.id}`}
+      href={`${AppRoutes.Schedule}/${schedule.id}`}
       className="p-1 rounded-lg relative h-fit w-full hover-colors hover:bg-primary/70 hover:text-black"
     >
       <div className="flex flex-col gap-1">

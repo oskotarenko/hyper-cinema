@@ -9,10 +9,8 @@ import { Button } from "@/shared/ui/button";
 type Props = {
   url: string;
 };
-
 export function OpenTrailerButton({ url }: Props) {
   return (
-    // <>
     <Popup
       trigger={
         <div className="flex [&>button]:w-full">
@@ -29,6 +27,5 @@ export function OpenTrailerButton({ url }: Props) {
     >
       <ReactPlayer url={url} volume={0.5} controls playing />
     </Popup>
-    // </>
   );
 }

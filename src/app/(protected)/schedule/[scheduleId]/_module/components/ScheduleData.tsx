@@ -2,6 +2,7 @@ import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { AppRoutes } from "@/config/routes";
 import { ISOToHoursMinutesDayMonth } from "@/shared/services/date.service";
 import { Button } from "@/shared/ui/button";
 import { Movie, Schedule } from "@prisma/client";
@@ -10,13 +11,12 @@ type Props = {
   schedule: Schedule;
   movie: Movie;
 };
-
 export default async function ScheduleData({ schedule, movie }: Props) {
   return (
     <div className="min-w-fit max-w-fit h-fit flex flex-col gap-2">
       <h1 className="hidden lg:block">Schedule details</h1>
       <div className="flex justify-between gap-4">
-        <Link href={`/movies/${movie.id}`} className="w-[135px] h-[200px] min-w-[135px] min-h-[200px]">
+        <Link href={`${AppRoutes.Movies}/${movie.id}`} className="w-[135px] h-[200px] min-w-[135px] min-h-[200px]">
           <Image src={movie.poster} width={135} height={200} alt={`${movie.title} poster`} className="rounded-xl" />
         </Link>
         <div className="flex flex-col gap-2">

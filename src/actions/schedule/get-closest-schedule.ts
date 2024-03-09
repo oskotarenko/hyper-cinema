@@ -1,8 +1,11 @@
 "use server"
 
 import { database, } from "@/config/database.config";
+import { Schedule, } from "@prisma/client";
 
-// TODO: rename this to getClosestSchedule 
-export async function getClosestSchedules() {
+/**
+ * @used_in app/(protected)/schedule
+ */
+export async function getClosestSchedule(): Promise<Schedule[]> {
   return await database.schedule.findMany({ take: 30, orderBy: { startTime: "asc" } });
 }
