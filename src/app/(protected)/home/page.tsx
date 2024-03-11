@@ -21,9 +21,9 @@ export default async function HomePage() {
 
   return (
     <Suspense fallback={<LoadingComponent />}>
-      <div className="flex flex-col items-center gap-4">
+      <div className="flex flex-col items-center gap-2 tablet:gap-4">
         <HomeBanner movie={movies[0]} />
-        <div>
+        <div className="w-full">
           <h1 className="pb-2">Newest movies</h1>
           <MoviesBlock movies={movies} />
         </div>
@@ -37,12 +37,12 @@ export default async function HomePage() {
           <div className="flex gap-2">
             <Link href="https://t.me/oskotarenko" target="_blank">
               <Button variant="link">
-                <Send size={20} /> Telegram
+                <Send size={20} /> <span className="hidden tablet:block">Telegram</span>
               </Button>
             </Link>
             <Link href="https://github.com/oskotarenko/hyper-cinema" target="_blank">
               <Button variant="link">
-                <Github size={20} /> Github Repo
+                <Github size={20} /> <span className="hidden tablet:block">Github Repo</span>
               </Button>
             </Link>
           </div>

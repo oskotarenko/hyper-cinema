@@ -26,7 +26,6 @@ export function ScheduleMenu({ schedules }: Props) {
 
   useEffect(() => {
     if (schedules.length > 0) {
-      console.log(schedules);
       const dateParts = currentDate.split(".");
       const targetIsoDate = `${new Date().getFullYear()}-${dateParts[1]}-${dateParts[0]}`;
 
