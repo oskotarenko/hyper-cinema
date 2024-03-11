@@ -26,7 +26,7 @@ export function LoginForm() {
   };
 
   return (
-    <div className="w-[400px] p-2 flex flex-col gap-4">
+    <div className="max-w-[400px] w-full p-2 flex flex-col gap-4">
       <Form action={handleLogin} title="Login">
         <Input Icon={AtSign} name="email" placeholder="Email" type="email" autoComplete="off" />
         <Input Icon={Lock} name="password" placeholder="Password" type="password" autoComplete="off" />

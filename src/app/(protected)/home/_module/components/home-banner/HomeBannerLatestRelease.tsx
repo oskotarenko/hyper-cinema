@@ -1,4 +1,4 @@
-import { MovieCard } from "@/shared/components/MovieCard";
+import { MovieCard } from "@/app/(protected)/_module/components/movie-card/MovieCard";
 import { Movie } from "@prisma/client";
 
 type Props = {

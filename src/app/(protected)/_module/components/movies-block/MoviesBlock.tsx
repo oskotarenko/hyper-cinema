@@ -1,6 +1,6 @@
 import { Movie } from "@prisma/client";
 
-import { MovieCard } from "./MovieCard";
+import { MovieCard } from "../movie-card/MovieCard";
 
 type Props = {
   movies: Movie[];

@@ -8,7 +8,7 @@ import { ActionResponse, } from "@/types/action-response";
 
 import {
   generateScheduleScheme as scheme, hallsScheme,
-} from "../../app/(protected)/schedule/8xEBbd39tLdRqqdnVCxMMv95SatGzqd9P3Mddn7IUZE/_module/constants/constants";
+} from "../../app/(protected)/schedule/manage/constants/constants";
 import { getMoviesSorted, } from "../movies/get-movies-sorted";
 
 /**

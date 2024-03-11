@@ -2,9 +2,7 @@
 import { revalidatePath, } from "next/cache";
 
 import { uploadFile, } from "@/actions/file/upload-file";
-import {
-  CreateMovieScheme,
-} from "@/app/(protected)/movies/TUmAZ18KnFN1tOo10WPflfxR2jBFJcW1id7JNQ48lzc/_module/schemes/create-movie";
+import { CreateMovieScheme, } from "@/app/(protected)/movies/manage/schemes/create-movie";
 import { database, } from "@/config/database.config";
 import { handleValidationError, } from "@/shared/services/handle-validation.service";
 import { response, } from "@/shared/services/response.service";

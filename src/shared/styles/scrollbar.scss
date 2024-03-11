@@ -1,0 +1,15 @@
+::-webkit-scrollbar {
+  @apply w-1 h-1;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary duration-200 transition-colors;
+
+  &:hover {
+    @apply bg-primary/70;
+  }
+}

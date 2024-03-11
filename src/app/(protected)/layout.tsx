@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 
 import Header from "./_module/components/header/Header";
 import { AppNavigation } from "./_module/components/navigation/Navigation";
@@ -13,7 +13,9 @@ export default function ProtectedLayout({ children }: Props) {
       <AppNavigation />
       <main className="flex-1 flex flex-col">
         <Header />
-        <div className="flex-1 p-2">{children}</div>
+        <div className="flex-1 p-2">
+          <Suspense>{children}</Suspense>
+        </div>
       </main>
     </div>
   );

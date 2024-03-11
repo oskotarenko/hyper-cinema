@@ -1,0 +1,37 @@
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  outline: none;
+  -webkit-text-fill-color: theme("colors.white");
+  -webkit-box-shadow: 0 0 0px 1000px theme("colors.gray") inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.file-input {
+  @apply bg-gray;
+
+  &::-webkit-file-upload-button {
+    display: none;
+  }
+
+  &::before {
+    content: "Select file";
+    @apply cursor-pointer bg-gray font-bold text-primary pr-2;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  &:hover::before {
+    border-color: black;
+  }
+
+  &:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }
+}

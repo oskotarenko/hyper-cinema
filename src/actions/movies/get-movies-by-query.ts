@@ -11,11 +11,11 @@ export async function getMoviesByQuery(query: string): Promise<Movie[]> {
     where: {
       status: "Released",
       OR: [
-        { title: { search: query, mode: "insensitive" }, },
-        { genres: { search: query, mode: "insensitive" } },
-        { actors: { search: query, mode: "insensitive" } },
-        { studio: { search: query, mode: "insensitive" } },
-        { director: { search: query, mode: "insensitive" } }
+        { title: { contains: query, mode: "insensitive" }, },
+        { genres: { contains: query, mode: "insensitive" } },
+        { actors: { contains: query, mode: "insensitive" } },
+        { studio: { contains: query, mode: "insensitive" } },
+        { director: { contains: query, mode: "insensitive" } }
       ],
     }
   });

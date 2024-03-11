@@ -46,7 +46,6 @@ export enum AppRoutes {
   Movies = "/movies",
   Schedule = "/schedule",
   Account = "/account",
-  About = "/about",
   Admin = "/admin",
   Tickets = "/tickets",
   Users = "/users",

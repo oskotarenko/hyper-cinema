@@ -1,4 +1,4 @@
-import MoviesBlock from "@/shared/components/MoviesBlock";
+import MoviesBlock from "@/app/(protected)/_module/components/movies-block/MoviesBlock";
 import { Movie } from "@prisma/client";
 
 import { MoviesBySearch } from "./MoviesBySearch";

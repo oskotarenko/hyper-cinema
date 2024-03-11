@@ -1,4 +1,4 @@
-import { Clapperboard, HelpCircle, Home, ListOrdered, LucideIcon, } from "lucide-react";
+import { Clapperboard, Home, ListOrdered, LucideIcon, } from "lucide-react";
 
 import { AppRoutes, } from "@/config/routes";
 
@@ -15,5 +15,4 @@ export const navRoutes: NavRoute[] = [
   { href: AppRoutes.Home, title: "Home", icon: Home },
   { href: AppRoutes.Movies, title: "Movies", icon: Clapperboard },
   { href: AppRoutes.Schedule, title: "Schedule", icon: ListOrdered },
-  { href: AppRoutes.About, title: "About", icon: HelpCircle }
 ]
