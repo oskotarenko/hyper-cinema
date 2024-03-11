@@ -29,7 +29,7 @@ export async function Ticket({ ticket }: Props) {
       </Link>
       <TicketData ticket={ticket} schedule={schedule} movie={movie} />
       <p
-        className={`px-3 py-2 rounded-lg absolute top-3 right-3
+        className={`px-2 py-1 rounded-lg absolute top-3 right-3
   ${ticket.status === "Actual" ? "bg-primary text-black" : ticket.status === "Expired" ? "bg-rose-500" : "bg-blue-500"}`}
       >
         {ticket.status}

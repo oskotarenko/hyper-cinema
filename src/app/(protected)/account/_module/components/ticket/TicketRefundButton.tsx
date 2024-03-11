@@ -16,7 +16,7 @@ export function TicketRefundButton({ ticketId }: Props) {
   return (
     <Button
       variant="filled"
-      classname="absolute bottom-3 right-3 text-sm max-w-fit bg-transparent text-red-600 border border-red-600 px-2 hover:bg-red-600 hover:text-white"
+      classname="absolute bottom-3 right-3 px-2 py-1 text-sm max-w-fit bg-transparent text-red-600 border border-red-600 hover:bg-red-600 hover:text-white"
       onClick={() => handleRefund(ticketId)}
     >
       Refund
